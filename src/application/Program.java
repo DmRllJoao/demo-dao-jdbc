@@ -1,29 +1,23 @@
 package application;
 
-import java.util.Date;
-
-import model.dao.ComposicaoExameDao;
-import model.dao.DaoFactory;
-import model.entities.ComposicaoExame;
-import model.entities.ConsultaMedica;
-import model.entities.Medico;
-import model.entities.Paciente;
+import db.DB;
 
 public class Program {
+    public static void main( String[] args ){
+        
+        if(DB.getConnection() != null){
+            System.out.println("Conexão com o banco de dados gerada com sucesso! ");
+        } else {
+            throw new RuntimeException("Ops! Erro ao conectar com o banco de dados. :(");
+        }
 
-	public static void main(String[] args) {
-		
-		ComposicaoExameDao composicaoexameDao = DaoFactory.createComposicaoExameDao();
-		
-		ComposicaoExame composicaoexame = composicaoexameDao.findById(2);
-				
-		System.out.println(composicaoexame);
-		
-		
-		//ConsultaMedica consultamedica = new ConsultaMedica(23, new Date(), null, null, null);
-		//System.out.println(consultamedica);
-		
-		
-	}
+        
+        CrudProgram.insertions();
+        System.out.println("Operações de inserção executadas com sucesso!");
+        
+
+        
+         
+    }
 
 }
