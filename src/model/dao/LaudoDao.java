@@ -1,0 +1,19 @@
+package model.dao;
+
+import java.util.List;
+
+import model.entities.Laudo;
+
+public interface LaudoDao {
+    
+    void insert(Laudo obj);
+
+    void update(Laudo obj);
+
+    void deleteById(Integer id);
+
+    Laudo findById(Integer id);
+
+    List<Laudo> findAll();
+
+}
